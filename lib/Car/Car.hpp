@@ -3,15 +3,15 @@
 
 #include <Arduino.h>
 #include <DCMotor.hpp>
-#include <LDR.hpp>
+#include <IRSensor.hpp>
 
 class Car {
   private:
     DCMotor& _leftMotor, _rightMotor;
   
   public:
-    LDR& leftSensor, rightSensor, frontSensor;
-    Car(DCMotor& leftMotor, DCMotor& rightMotor, LDR& leftSensor, LDR& rightSensor, LDR& frontSensor)
+    IRSensor& leftSensor, rightSensor, frontSensor;
+    Car(DCMotor& leftMotor, DCMotor& rightMotor, IRSensor& leftSensor, IRSensor& rightSensor, IRSensor& frontSensor)
       :
       _leftMotor(leftMotor),
       _rightMotor(rightMotor),

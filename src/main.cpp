@@ -11,9 +11,9 @@
 
 DCMotor leftMotor(LEFT_MOTOR_PIN1, LEFT_MOTOR_PIN2);
 DCMotor rightMotor(RIGHT_MOTOR_PIN1, RIGHT_MOTOR_PIN2);
-LDR leftSensor(LEFT_SENSOR_PIN, "Esquerda");
-LDR middleSensor(MIDDLE_SENSOR_PIN, "Meio");
-LDR rightSensor(RIGHT_SENSOR_PIN, "Direita");
+IRSensor leftSensor(LEFT_SENSOR_PIN, "Esquerda");
+IRSensor middleSensor(MIDDLE_SENSOR_PIN, "Meio");
+IRSensor rightSensor(RIGHT_SENSOR_PIN, "Direita");
 Car car(leftMotor, rightMotor, leftSensor, rightSensor, middleSensor);
 
 void setup() {
