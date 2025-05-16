@@ -19,16 +19,24 @@ class Car {
       rightSensor(rightSensor),
       frontSensor(frontSensor) {}
 
-    void on(uint8_t leftSpeed, uint8_t rightSpeed) {
-      _leftMotor.setSpeed(leftSpeed);
-      _rightMotor.setSpeed(rightSpeed);
-      _leftMotor.on();
-      _rightMotor.on();
+    void forward() {
+      _leftMotor.forward();
+      _rightMotor.forward();
     }
 
-    void off() {
-      _leftMotor.off();
-      _rightMotor.off();
+    void left() {
+      _leftMotor.backward();
+      _rightMotor.forward();
+    }
+
+    void right() {
+      _leftMotor.forward();
+      _rightMotor.backward();
+    }
+
+    void stop() {
+      _leftMotor.stop();
+      _rightMotor.stop();
     }
 };
 

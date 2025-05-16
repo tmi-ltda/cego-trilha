@@ -23,10 +23,16 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  uint16_t leftSpeed = car.leftSensor.read() / car.frontSensor.read();
-  uint8_t rightSpeed = car.rightSensor.read() / car.frontSensor.read();
+  bool left = car.leftSensor.read();
+  bool right = car.rightSensor.read();
+  bool front = car.frontSensor.read();
 
-  car.on(leftSpeed, rightSpeed);
+  if (!front) {
+    if (!left) car.left();
+    else if (!right) car.right();
+    else car.forward();
+  }
+  else car.stop();
 
   delay(100);
 }
