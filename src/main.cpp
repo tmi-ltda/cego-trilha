@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Car.hpp>
+#include <IRSensor.hpp>
 
 // denfinição da pinagem dos dispositivos de I/O
 #define LEFT_MOTOR_PIN1 33
@@ -10,15 +11,21 @@
 #define MIDDLE_SENSOR_PIN 14
 #define RIGHT_SENSOR_PIN 12
 
-// instanciamento dos objetos que compõem o carro
-DCMotor leftMotor(LEFT_MOTOR_PIN1, LEFT_MOTOR_PIN2); // motor esquerdo
-DCMotor rightMotor(RIGHT_MOTOR_PIN1, RIGHT_MOTOR_PIN2); // motor direito
+// Instanciamento dos sensores
 IRSensor leftSensor(LEFT_SENSOR_PIN, "Esquerda"); // sensor da esquerda
 IRSensor frontSensor(MIDDLE_SENSOR_PIN, "Meio"); // sensor frontal
 IRSensor rightSensor(RIGHT_SENSOR_PIN, "Direita"); // sensor da direita
 
+// Configuração do carro
+static car_config_t config = {
+  .left_pin1 = LEFT_MOTOR_PIN1,
+  .left_pin2 = LEFT_MOTOR_PIN2,
+  .right_pin1 = RIGHT_MOTOR_PIN1,
+  .right_pin2 = RIGHT_MOTOR_PIN2
+};
+
 // instanciamento do carro
-Car car(leftMotor, rightMotor, leftSensor, rightSensor, frontSensor);
+Car car(config);
 
 void setup() {
   // put your setup code here, to run once:
@@ -29,9 +36,9 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   // leitura dos sensores
-  bool left = car.leftSensor.read();
-  bool right = car.rightSensor.read();
-  bool front = car.frontSensor.read();
+  bool left = leftSensor.read();
+  bool right = rightSensor.read();
+  bool front = frontSensor.read();
 
   // lógica de movimento
   if (!front) {

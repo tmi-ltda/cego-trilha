@@ -1,0 +1,6 @@
+[submodule "lib/IRSensor"]
+	path = lib/IRSensor
+	url = https://github.com/tmi-ltda/ir-sensor.git
+[submodule "lib/Car"]
+	path = lib/Car
+	url = https://github.com/tmi-ltda/car.git
