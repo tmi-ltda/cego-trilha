@@ -10,3 +10,6 @@
 [submodule "lib/OTA"]
 	path = lib/OTA
 	url = https://github.com/tmi-ltda/ota.git
+[submodule "lib/IRStrip"]
+	path = lib/IRStrip
+	url = https://github.com/tmi-ltda/ir-strip.git
