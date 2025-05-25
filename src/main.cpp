@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <Car.hpp>
 #include <IRSensor.hpp>
+#include <OTA.hpp>
 
 // denfinição da pinagem dos dispositivos de I/O
 #define LEFT_MOTOR_PIN1 33
@@ -31,23 +32,12 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);   // inicialização da comunicação serial
                           // (apenas para monitorar registros dos sensores)
+
+  ota_begin();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  // leitura dos sensores
-  bool left = leftSensor.read();
-  bool right = rightSensor.read();
-  bool front = frontSensor.read();
-
-  // lógica de movimento
-  if (!front) {
-    if (!left) car.right(); // correção para a esquerda
-    else if (!right) car.left(); // correção para a direita
-    else car.forward(); // frontal
-  }
-  else car.stop(); // para o carro caso ele esteja fora da trilha
-
-  delay(100);   // delay de leitura
-                // remover após a fase de testes
+  // Atualiza o loop do OTA
+  ArduinoOTA.handle();
 }
