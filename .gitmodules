@@ -4,3 +4,6 @@
 [submodule "lib/Car"]
 	path = lib/Car
 	url = https://github.com/tmi-ltda/car.git
+[submodule "lib/DCMotor"]
+	path = lib/DCMotor
+	url = https://github.com/tmi-ltda/dc-motor.git
