@@ -18,7 +18,7 @@
 #define D7 17
 
 // Configuração do carro
-static car_config_t c_car = {
+car_config_t c_car = {
   .left_pin1 = LEFT1,
   .left_pin2 = LEFT2,
   .right_pin1 = RIGHT1,
@@ -28,7 +28,7 @@ static car_config_t c_car = {
 Car car(c_car);
 
 // Configuração dos sensores
-static ir_sensor_config_t c_sensor[SIZE] = {
+ir_sensor_config_t c_sensor[SIZE] = {
   {D0, "Esquerda3", -3},
   {D1, "Esquerda2", -2},
   {D2, "Esquerda1", -1},
