@@ -2,6 +2,8 @@
 #include <Car.hpp>
 #include <IRStrip.hpp>
 #include <OTA.hpp>
+#include <BluetoothSerial.h>
+#include <BTDebug.hpp>
 
 // denfinição da pinagem dos dispositivos de I/O
 #define LEFT1 32
@@ -39,6 +41,14 @@ ir_sensor_config_t c_sensor[SIZE] = {
   {D7, "Direita3", 3},
 };
 IRStrip strip(c_sensor);
+
+// instanciamento do Bluetooth
+BluetoothSerial bt;
+// Instanciamento do Debugger
+BTDebug Debug(Serial, bt);
+
+// Substituição de macro Serial
+#define Serial Debug
 
 void setup() {
   // put your setup code here, to run once:
