@@ -52,7 +52,7 @@ BTDebug Debug(Serial, bt);
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(115200);   // inicialização da comunicação serial
+  Serial.begin(115200, "ESP32 BT");   // inicialização da comunicação serial
                           // (apenas para monitorar registros dos sensores)
 
   ota_begin();
