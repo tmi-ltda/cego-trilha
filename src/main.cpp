@@ -2,22 +2,22 @@
 #include <Car.hpp>
 #include <IRStrip.hpp>
 #include <OTA.hpp>
-#include <BluetoothSerial.h>
-#include <BTDebug.hpp>
+// #include <BluetoothSerial.h>
+// #include <BTDebug.hpp>
 
 // denfinição da pinagem dos dispositivos de I/O
-#define LEFT1 32
-#define LEFT2 33
-#define RIGHT1 25
-#define RIGHT2 26
-#define D0 8
-#define D1 9
-#define D2 10
-#define D3 11
-#define D4 12
-#define D5 13
-#define D6 15
-#define D7 17
+#define LEFT1 21
+#define LEFT2 19
+#define RIGHT1 18
+#define RIGHT2 5
+#define D1 12
+#define D2 14
+#define D3 27
+#define D4 26
+#define D5 25
+#define D6 33
+#define D7 32
+#define D8 35
 
 // Configuração do carro
 car_config_t c_car = {
@@ -31,28 +31,28 @@ Car car(c_car);
 
 // Configuração dos sensores
 ir_sensor_config_t c_sensor[SIZE] = {
-  {D0, "Esquerda3", -3},
-  {D1, "Esquerda2", -2},
-  {D2, "Esquerda1", -1},
-  {D3, "Centro1", 0},
-  {D4, "Centro2", 0},
-  {D5, "Direita1", 1},
-  {D6, "Direita2", 2},
-  {D7, "Direita3", 3},
+  {D1, "Esquerda3", -3},
+  {D2, "Esquerda2", -2},
+  {D3, "Esquerda1", -1},
+  {D4, "Centro1", 0},
+  {D5, "Centro2", 0},
+  {D6, "Direita1", 1},
+  {D7, "Direita2", 2},
+  {D8, "Direita3", 3},
 };
 IRStrip strip(c_sensor);
 
 // instanciamento do Bluetooth
-BluetoothSerial bt;
+// BluetoothSerial bt;
 // Instanciamento do Debugger
-BTDebug Debug(Serial, bt);
+// BTDebug Debug(Serial, bt);
 
 // Substituição de macro Serial
-#define Serial Debug
+// #define Serial Debugs
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(115200, "ESP32 BT");   // inicialização da comunicação serial
+  Serial.begin(115200);   // inicialização da comunicação serial
                           // (apenas para monitorar registros dos sensores)
 
   ota_begin();
