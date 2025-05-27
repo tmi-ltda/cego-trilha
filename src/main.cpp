@@ -1,9 +1,6 @@
 #include <Arduino.h>
 #include <Car.hpp>
 #include <IRStrip.hpp>
-#include <OTA.hpp>
-// #include <BluetoothSerial.h>
-// #include <BTDebug.hpp>
 
 // denfinição da pinagem dos dispositivos de I/O
 #define LEFT1 21
@@ -42,29 +39,16 @@ ir_sensor_config_t c_sensor[SIZE] = {
 };
 IRStrip strip(c_sensor);
 
-// instanciamento do Bluetooth
-// BluetoothSerial bt;
-// Instanciamento do Debugger
-// BTDebug Debug(Serial, bt);
-
-// Substituição de macro Serial
-// #define Serial Debugs
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);   // inicialização da comunicação serial
                           // (apenas para monitorar registros dos sensores)
-
-  ota_begin();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  // Atualiza o loop do OTA
-  ArduinoOTA.handle();
-
   // Controle dos sensores
-  strip.read();
+  strip.read(IR_MODES::ANALOG_SENSOR);
   int8_t error = strip.getError();
   if (error < 0) {
     car.axialRight();
