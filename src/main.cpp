@@ -1,6 +1,15 @@
 #include <Arduino.h>
+#include <BTDebug.hpp>
+
+// Inicialização do debuger
+BluetoothSerial bt;
+BTDebug debbuger(Serial, bt);
+
+#define Serial debbuger
+
 #include <Car.hpp>
 #include <IRStrip.hpp>
+#include <BluetoothSerial.h>
 
 // denfinição da pinagem dos dispositivos de I/O
 #define LEFT1 21
@@ -27,7 +36,7 @@ car_config_t c_car = {
 Car car(c_car);
 
 // Configuração dos sensores
-ir_sensor_config_t c_sensor[SIZE] = {
+ir_sensor_config_t c_sensor[SENSOR_N] = {
   {D1, "Esquerda3", -3},
   {D2, "Esquerda2", -2},
   {D3, "Esquerda1", -1},
@@ -41,8 +50,8 @@ IRStrip strip(c_sensor);
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(115200);   // inicialização da comunicação serial
-                          // (apenas para monitorar registros dos sensores)
+  Serial.begin(115200);
+  debbuger.btBegin("ESP32_Debug");
 }
 
 void loop() {

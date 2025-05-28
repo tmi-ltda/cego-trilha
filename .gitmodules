@@ -10,3 +10,6 @@
 [submodule "lib/IRStrip"]
 	path = lib/IRStrip
 	url = https://github.com/tmi-ltda/ir-strip.git
+[submodule "lib/BTDebug"]
+	path = lib/BTDebug
+	url = https://github.com/tmi-ltda/bt-debug
