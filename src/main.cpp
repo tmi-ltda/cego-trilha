@@ -24,7 +24,7 @@ BTDebug debbuger(Serial, bt);
 #define D6 32
 #define D7 35
 #define D8 34
-#define TRIM 2
+#define TRIM 4
 
 // Configuração do carro
 car_config_t c_car = {
@@ -58,6 +58,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   // Controle dos sensores
+  strip.setThreshold(analogRead(TRIM));
   strip.read(IR_MODES::ANALOG_SENSOR);
   int8_t error = strip.getError();
   if (error < 0) {
