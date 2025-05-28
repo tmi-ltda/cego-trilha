@@ -16,14 +16,15 @@ BTDebug debbuger(Serial, bt);
 #define LEFT2 19
 #define RIGHT1 18
 #define RIGHT2 5
-#define D1 12
-#define D2 14
-#define D3 27
-#define D4 26
-#define D5 25
-#define D6 33
-#define D7 32
-#define D8 35
+#define D1 14
+#define D2 27
+#define D3 26
+#define D4 25
+#define D5 33
+#define D6 32
+#define D7 35
+#define D8 34
+#define TRIM 2
 
 // Configuração do carro
 car_config_t c_car = {
