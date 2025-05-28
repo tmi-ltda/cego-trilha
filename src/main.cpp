@@ -60,7 +60,7 @@ void loop() {
   strip.read(IR_MODES::ANALOG_SENSOR);
   int8_t error = strip.getError();
   if (error < 0) {
-    car.axialRight();
+    car.axialLeft();
   } else if (error > 0) {
     car.axialRight();
   } else {
