@@ -6,6 +6,7 @@ BluetoothSerial bt;
 BTDebug debbuger(Serial, bt);
 
 #define Serial debbuger
+#define SENSOR_N 3
 
 #include <Car.hpp>
 #include <IRStrip.hpp>
@@ -19,12 +20,6 @@ BTDebug debbuger(Serial, bt);
 #define D1 14
 #define D2 27
 #define D3 26
-#define D4 25
-#define D5 33
-#define D6 32
-#define D7 35
-#define D8 34
-#define TRIM 4
 
 // Configuração do carro
 car_config_t c_car = {
@@ -38,14 +33,9 @@ Car car(c_car);
 
 // Configuração dos sensores
 ir_sensor_config_t c_sensor[SENSOR_N] = {
-  {D1, "Esquerda3", -3},
-  {D2, "Esquerda2", -2},
-  {D3, "Esquerda1", -1},
-  {D4, "Centro1", 0},
-  {D5, "Centro2", 0},
-  {D6, "Direita1", 1},
-  {D7, "Direita2", 2},
-  {D8, "Direita3", 3},
+  {D1, "Esquerda", -1},
+  {D2, "Centro", 0},
+  {D3, "Direita", 1},
 };
 IRStrip strip(c_sensor);
 
@@ -58,8 +48,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   // Controle dos sensores
-  strip.setThreshold(analogRead(TRIM));
-  strip.read(IR_MODES::ANALOG_SENSOR);
+  strip.read(IR_MODES::DIGITAL_SENSOR);
   int8_t error = strip.getError();
   if (error < 0) {
     car.axialLeft();
