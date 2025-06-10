@@ -51,9 +51,9 @@ void loop() {
   strip.read(IR_MODES::DIGITAL_SENSOR);
   int8_t error = strip.getError();
   if (error < 0) {
-    car.axialLeft();
-  } else if (error > 0) {
     car.axialRight();
+  } else if (error > 0) {
+    car.axialLeft();
   } else {
     car.forward();
   }
